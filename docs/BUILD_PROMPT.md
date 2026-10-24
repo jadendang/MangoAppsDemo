@@ -133,13 +133,13 @@ hireStatus(hire):
 
 ### Sample hires (seed exactly — these produce the three states)
 
-- **Ben** — Software Engineer, Engineering, start **2026-10-28**, manager "Dana Okafor".
+- **Ben** — Software Engineer, Engineering, start **2026-10-28**, manager "John".
   All tasks open (nothing done). → **Needs attention** (required pre-start open, start in 2 days).
-- **Joseph** — Account Executive, Sales, start **2026-10-24**, manager "Sam Rivera".
+- **Joseph** — Account Executive, Sales, start **2026-10-24**, manager "Jane".
   Mark **done**: sign-offer, bg-check, tax-forms, crm-access, emergency-contact.
   Leave open: handbook (+2, due today), manager-1on1 (+3), territory (+3), benefits, shadow.
   → **On track** (nothing overdue).
-- **Martin** — Content Marketer, Marketing, start **2026-11-02**, manager "Sam Rivera".
+- **Martin** — Content Marketer, Marketing, start **2026-11-02**, manager "Jane".
   All tasks open. → **Not started** (0 done; start is 7 days out so not yet needs-attention).
 
 ### Phase 1 acceptance (print this to verify before continuing)

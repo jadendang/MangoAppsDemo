@@ -1,7 +1,11 @@
 # BrightPath Onboarding (v1 prototype)
 
-A role-aware onboarding prototype. A new hire sees only their **next critical tasks**, and their
-manager sees **who needs attention**. Client-only React app; all data is mock and in memory.
+New hires miss important early steps and managers can't tell who's behind. This surfaces each
+hire's **next critical tasks** and flags the ones who **need attention** — so nothing slips in
+the first few weeks.
+
+A role-aware onboarding prototype: a new hire sees only their next critical tasks, and their
+manager sees who needs attention. Client-only React app; all data is mock and in memory.
 
 ## Run it
 
@@ -61,6 +65,20 @@ Only `open` / `done` is stored. Overdue, blocked, and due-soon are worked out fr
 - `src/logic/format.js`: UI wording ("Due Friday", "IT provisions this")
 - `src/components/`: employee view, manager view, shared task rows
 - `scripts/verify-phase1.js`: prints and checks the rule results
+
+## How this was built
+
+Built with Claude Code in roughly 3 hours. I started from a written PRD and a build prompt
+(both in `docs/`), then adjusted as I went — for example, I added Priya/Finance as an edge-case
+hire to cover the no-template fallback and the all-done empty state, which weren't in the
+original plan.
+
+## Project docs
+
+- `docs/PRD.md` — how I scoped v1: the problem, who it's for, what I built vs. cut, and how I
+  handled the two stakeholders who disagree (David wants per-department plans; Emily doesn't
+  want to be overwhelmed).
+- `docs/BUILD_PROMPT.md` — the prompt I used to drive the build.
 
 ## What's mocked / out of scope
 
