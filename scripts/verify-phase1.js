@@ -3,6 +3,8 @@
 
 import { createSampleHires } from "../src/data/hires.js";
 import { buildPlan } from "../src/data/templates.js";
+import { contacts, locations } from "../src/data/directory.js";
+import { helpFor, resolveContact, visibleFields, locationOf } from "../src/logic/contacts.js";
 import {
   TODAY,
   formatDate,
@@ -65,6 +67,30 @@ expect("Template untouched", buildPlan("Engineering").tasks.every((t) => t.statu
 const fallback = buildPlan("Finance");
 expect("Fallback flag", fallback.usedFallback, true);
 expect("Fallback task count", fallback.tasks.length, 7);
+
+// Every task's help resolves to a real contact, at every location, for every sample hire.
+for (const hire of createSampleHires()) {
+  expect(`${hire.name} location exists`, Boolean(locationOf(hire)), true);
+  for (const task of hire.tasks) {
+    for (const location of Object.keys(locations)) {
+      const help = helpFor(task, { ...hire, location });
+      if (help?.ask) expect(`${hire.name} ${task.id} @${location} ask resolves`, Boolean(help.contact), true);
+    }
+  }
+}
+for (const id of Object.values(locations).flatMap((l) => l.directory)) {
+  expect(`directory contact ${id} exists`, Boolean(contacts[id]), true);
+}
+
+// Laptops ship home from every location; missing buddy falls back to the manager.
+expect("Ben laptop help (HQ)", helpFor(ben.tasks.find((t) => t.id === "laptop"), ben).contact.id, "it-shipping");
+expect("Laptop help (remote)", helpFor(ben.tasks.find((t) => t.id === "laptop"), { ...ben, location: "remote" }).contact.id, "it-shipping");
+expect("No buddy → manager", resolveContact("buddy", { ...ben, buddy: null }).id, "john");
+
+// Mobile numbers are manager-only.
+const kinds = (viewer) => visibleFields(contacts.dana, viewer).map((f) => f.kind);
+expect("Employee sees email + phone", kinds("employee"), ["email", "phone"]);
+expect("Manager also sees mobile", kinds("manager"), ["email", "phone", "mobile"]);
 
 if (failures.length) {
   console.log("FAILED:");

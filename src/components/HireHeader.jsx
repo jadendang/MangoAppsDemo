@@ -1,5 +1,6 @@
 import { phaseBadge, progress, daysRemaining } from "../logic/onboarding.js";
 import { formatShortDate } from "../logic/format.js";
+import { locationOf } from "../logic/contacts.js";
 
 export default function HireHeader({ hire, children }) {
   const { done, total } = progress(hire);
@@ -12,7 +13,8 @@ export default function HireHeader({ hire, children }) {
         <div>
           <h1>{hire.name}</h1>
           <p className="muted">
-            {hire.role} · {hire.department} · Starts {formatShortDate(hire.startDate)}
+            {hire.role} · {hire.department}
+            {locationOf(hire) && ` · ${locationOf(hire).name}`} · Starts {formatShortDate(hire.startDate)}
           </p>
         </div>
         <span className="badge">{phaseBadge(hire)}</span>

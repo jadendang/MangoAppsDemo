@@ -4,6 +4,8 @@ import { whyLine, ownerNote } from "../logic/format.js";
 import HireHeader from "./HireHeader.jsx";
 import TaskRow from "./TaskRow.jsx";
 import PhaseGroups from "./PhaseGroups.jsx";
+import TaskHelp from "./TaskHelp.jsx";
+import Contacts from "./Contacts.jsx";
 
 function NextActionCard({ task, hire, onDone }) {
   const overdue = isOverdue(task, hire);
@@ -18,6 +20,7 @@ function NextActionCard({ task, hire, onDone }) {
           {task.compliance && <span className="chip">Compliance</span>}
           {note && <span className="chip chip-owner">{note}</span>}
         </div>
+        <TaskHelp task={task} hire={hire} viewer="employee" />
       </div>
       <button className="primary-button" onClick={() => onDone(task.id)}>
         {task.compliance ? "Acknowledge" : "Mark done"}
@@ -106,6 +109,8 @@ export default function EmployeeView({ hire, onDone, onUndo, unlocked, onDismiss
           )}
         </section>
       )}
+
+      {tab === "next" && !allDone && <Contacts hire={hire} viewer="employee" />}
 
       {tab === "coming" && (
         <section className="card">

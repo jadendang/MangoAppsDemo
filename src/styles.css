@@ -448,6 +448,85 @@ button {
   margin-bottom: 4px;
 }
 
+/* Task help */
+.task-help {
+  margin-top: 8px;
+}
+.task-help-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  margin-top: 10px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: var(--neutral-soft);
+  font-size: 14px;
+  animation: enter 180ms ease;
+}
+.help-label {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  margin-bottom: 2px;
+}
+.breadcrumb {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 6px;
+  font-weight: 500;
+}
+.breadcrumb li + li::before {
+  content: "›";
+  margin-right: 6px;
+  color: var(--muted);
+}
+.help-link {
+  text-decoration: none;
+}
+
+/* Contacts */
+.contact-list {
+  list-style: none;
+  margin: 4px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px 20px;
+}
+.contact-section {
+  margin-top: 20px;
+}
+.location-address {
+  margin-top: 2px;
+}
+.contact-name {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+}
+.contact-fields {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 12px;
+  margin-top: 2px;
+  font-size: 14px;
+}
+.contact-fields a {
+  color: var(--accent-text);
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+.contact-fields a:hover {
+  text-decoration: underline;
+}
+
 /* Empty states + toast */
 .empty-state {
   text-align: center;

@@ -66,6 +66,7 @@ The forcing question: what's the least we can build so Emily never misses a crit
 | Manager view: summary counts + a Needs Attention table (with an Issue column) + per-hire drill-down | Build | Answers Sarah and the manager's visibility need |
 | Role switcher (view as employee / manager) | Build | Lets us demo both sides without auth |
 | Task owners (employee / manager / IT / HR) | Build | A detail that reflects reality; some tasks aren't the hire's |
+| Task help + contacts (reach path, link, who to ask; plan contacts and a per-location directory with role-based field visibility) | Build | "How do I do this, and who do I ask?" is the next place a hire gets stuck; collapsed by default so it doesn't add noise |
 | Auth, notifications, integrations, template editor, e-sign, Q&A | Cut | Real but not needed to prove the core workflow |
 
 **One structural simplification.** The real Onboarding Hub splits work into six object types: forms, documents, tasks, checkpoints, trainings and surveys. v1 collapses all of them into a single `task` type (with an optional category label), so the three hours go into prioritization and status logic rather than modeling six objects.

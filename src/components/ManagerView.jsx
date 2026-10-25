@@ -3,6 +3,7 @@ import { hireStatus, attentionIssues, managerSummary, progress, phaseBadge, isOv
 import { STATUS_LABELS } from "../logic/format.js";
 import HireHeader from "./HireHeader.jsx";
 import PhaseGroups from "./PhaseGroups.jsx";
+import Contacts from "./Contacts.jsx";
 
 function StatusPill({ status }) {
   return <span className={`status-pill ${status.replace(" ", "-")}`}>{STATUS_LABELS[status]}</span>;
@@ -46,6 +47,7 @@ function HireDetail({ hire, onBack }) {
         </div>
         <PhaseGroups hire={hire} />
       </section>
+      <Contacts hire={hire} viewer="manager" title={`${hire.name}'s contacts`} />
     </div>
   );
 }
